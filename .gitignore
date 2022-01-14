@@ -10,7 +10,7 @@ ipynb/
 *.so
 .DS_Store
 subnets/
-data/
+#data/
 tmp*/
 scripts*/
 search-*/
@@ -47,7 +47,7 @@ MANIFEST
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
-experiments/
+#experiments/
 # Unit test / coverage reports
 htmlcov/
 .tox/
@@ -141,3 +141,4 @@ dmypy.json
 .pyre/
 /pretrained/
 .idea
+/data/meta_data/nasbench_full.tfrecord

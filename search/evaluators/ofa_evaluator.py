@@ -269,7 +269,7 @@ class ImageNetEvaluator(OFAEvaluator):
                  sub_train_size=2000, sub_train_batch_size=200):
 
         # build ImageNet dataset and dataloader
-        from data_providers.imagenet import ImagenetDataProvider
+        from data.data_providers.imagenet import ImagenetDataProvider
 
         imagenet_dataprovider = ImagenetDataProvider(
             save_path=data_root, train_batch_size=batchsize, test_batch_size=batchsize,
@@ -301,7 +301,7 @@ if __name__ == '__main__':
     ofa_network.load_state_dict(state_dicts)
 
     # define the dataset
-    from data_providers.cifar import CIFAR10DataProvider as DataProvider
+    from data.data_providers.cifar import CIFAR10DataProvider as DataProvider
     data_provider = DataProvider(save_path='/home/cseadmin/datasets/')
 
     # reset classification layer if needed

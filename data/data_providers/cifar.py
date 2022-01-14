@@ -6,7 +6,7 @@ import torch.utils.data
 import torchvision.transforms as transforms
 
 from cutmix.cutmix import CutMix
-from data_providers.auto_augment import AutoAugment
+from data.data_providers.auto_augment import AutoAugment
 from ofa.imagenet_classification.data_providers.base_provider import DataProvider
 from ofa.utils import MyRandomResizedCrop, MyDistributedSampler
 
@@ -170,7 +170,7 @@ class CIFAR10DataProvider(DataProvider):
         return dataset
 
     def valid_dataset(self, _transforms):
-        from data_providers.datasets.cifar import AdditioanlCIFAR10
+        from data.datasets.cifar import AdditioanlCIFAR10
         dataset = AdditioanlCIFAR10(root=self.valid_path, transform=_transforms)
         return dataset
 

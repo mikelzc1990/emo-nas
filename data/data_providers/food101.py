@@ -7,7 +7,7 @@ import torchvision.transforms as transforms
 import torchvision.datasets as datasets
 
 from cutmix.cutmix import CutMix
-from data_providers.auto_augment import AutoAugment
+from data.data_providers.auto_augment import AutoAugment
 from ofa.imagenet_classification.data_providers.base_provider import DataProvider
 from ofa.utils import MyRandomResizedCrop, MyDistributedSampler
 

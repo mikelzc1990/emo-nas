@@ -223,7 +223,7 @@ class MSuNAS(EvoNAS):
         # ----------------------- setup ----------------------- #
         # create the save dir and setup logger
         self.save_path = os.path.join(
-            self.save_path, self.search_space.name + "NSGANetV2-{}-{}-n_doe@{}-n_gen@{}-max_gens@{}".format(
+            self.save_path, "NSGANetV2-" + self.search_space.name + "-{}-{}-n_doe@{}-n_gen@{}-max_gens@{}".format(
                 self.objs, self.surrogate, self.n_doe, self.n_gen, self.max_gens))
 
         os.makedirs(self.save_path, exist_ok=True)

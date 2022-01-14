@@ -108,8 +108,9 @@ class SurrogateModel:
             print("Fold {}: rmse = {:.4f}, pearson = {:.4f}, spearman = {:.4f}, kendall = {:.4f}".format(
                 i, rmse, r, rho, tau))
 
-            kendall_tau.append(tau)
-            pool.append(expert)
+            if tau > 0:
+                kendall_tau.append(tau)
+                pool.append(expert)
 
         print("{}-fold KTau performance = {:.4f}({:.4f})".format(
             num_folds, np.mean(kendall_tau), np.std(kendall_tau)))

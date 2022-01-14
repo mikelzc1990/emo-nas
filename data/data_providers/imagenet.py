@@ -14,6 +14,9 @@ from ofa.imagenet_classification.data_providers.base_provider import DataProvide
 from ofa.utils.my_dataloader import MyRandomResizedCrop, MyDistributedSampler
 
 
+__all__ = ['ImagenetDataProvider']
+
+
 class ImagenetDataProvider(DataProvider):
     
     def __init__(self, save_path=None, train_batch_size=256, test_batch_size=512, valid_size=None, n_worker=32,

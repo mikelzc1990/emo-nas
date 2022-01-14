@@ -7,7 +7,7 @@ from copy import deepcopy
 from collections import OrderedDict
 import torchvision.transforms as transforms
 
-from data_providers.auto_augment import *
+from data.data_providers.auto_augment import *
 
 
 class AverageMeter:

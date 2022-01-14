@@ -8,7 +8,7 @@ from search.search_spaces import SearchSpace
 class OFAMobileNetV3SearchSpace(SearchSpace):
 
     def __init__(self,
-                 image_scale=(192, 256),  # (min img size, max img size)
+                 image_scale=(192, 224, 256),  # (min img size, max img size)
                  ks_list=(3, 5, 7),  # kernel sizes
                  depth_list=(2, 3, 4),  # depth
                  expand_ratio_list=(3, 4, 6),  # expansion ratio
@@ -17,7 +17,7 @@ class OFAMobileNetV3SearchSpace(SearchSpace):
 
         super().__init__(**kwargs)
 
-        self.image_scale_list = list(range(image_scale[0], image_scale[1] + 1, 8))
+        self.image_scale_list = list(range(min(image_scale), max(image_scale) + 1, 8))
         self.ks_list = list(ks_list)
         self.depth_list = list(depth_list)
         self.expand_ratio_list = list(expand_ratio_list)
@@ -59,12 +59,6 @@ class OFAMobileNetV3SearchSpace(SearchSpace):
                 self.str2var_mapping['ks@{}_e@{}'.format(ks, e)] = increment
                 self.var2str_mapping[increment] = (ks, e)
                 increment += 1
-
-        print(self.lb)
-        print(self.ub)
-        print(self.categories)
-        print(self.str2var_mapping)
-        print(self.var2str_mapping)
 
     @property
     def name(self):
@@ -188,7 +182,8 @@ if __name__ == '__main__':
     from search.algorithms.utils import distribution_estimation
     from search.algorithms.evo_nas import EvoNAS
 
-    search_space = OFAMobileNetV3SearchSpace(image_scale=(224, 224), ks_list=(3, ), expand_ratio_list=(3, 4, ), depth_list=(2, 3, ))
+    search_space = OFAMobileNetV3SearchSpace(image_scale=(224, 224), ks_list=(3, ), expand_ratio_list=(3, 4, ),
+                                             depth_list=(2, 3, ))
     supernet = GenOFAMobileNetV3(
         n_classes=1000, dropout_rate=0, image_scale_list=search_space.image_scale_list,
         width_mult_list=search_space.width_mult_list, ks_list=search_space.ks_list,
